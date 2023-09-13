@@ -10,13 +10,14 @@ odds_tables = pd.read_html('https://www.vegasinsider.com/nfl/nfl-odds-week-2-202
 
 table = odds_tables[0]
 
+
 table[['Away','Home']]= table['Matchup'].str.split("vs", expand = True)
-table[['AwayPC','HomePC']] =table['Spread'].str.split(')',1, expand = True)
+table[['AwayPC','HomePC']] =table['Spread'].str.split(')',n=1, expand = True)
 table[['AwayPts','AwayMny']] = table['AwayPC'].str.split('(', expand = True)
 table[['HomePts','HomeMny']] = table['HomePC'].str.split('(', expand = True)
 table['AwayMny']=table['AwayMny'].str.replace(')','',regex=False)
 table['HomeMny']=table['HomeMny'].str.replace(')','',regex=False)
-table[['OversTmp','UndersTmp']] =table['Total'].str.split(')',1, expand = True)
+table[['OversTmp','UndersTmp']] =table['Total'].str.split(')',n=1, expand = True)
 table[['Overs','OversMny']] = table['OversTmp'].str.split('(', expand = True)
 table[['Unders','UndersMny']] = table['UndersTmp'].str.split('(', expand = True)
 table['OversMny']=table['OversMny'].str.replace(')','',regex=False)
