@@ -28,3 +28,7 @@ table.drop(columns=['Matchup', 'Spread','AwayPC','HomePC','Total','OversTmp','Un
 table['AwayPts'] = table['AwayPts'].apply(pd.to_numeric)
 table['HomePts'] = table['HomePts'].apply(pd.to_numeric)
 print(table.reindex(table['AwayPts'].abs().sort_values().index))
+
+fig, axs = plt.subplots(1,2,sharey=True, tight_layout=True)
+axs[0].hist(table['AwayPts'].abs(),bins=15 )
+plt.show()  

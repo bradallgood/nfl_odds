@@ -62,3 +62,7 @@ for index, row in table.iterrows():
     i += 1
 
 print(odds_table.reindex(odds_table['away_spread'].abs().sort_values().index))
+
+fig, axs = plt.subplots(1,2,sharey=True, tight_layout=True)
+axs[0].hist(odds_table['away_spread'].abs(),bins=20 )
+plt.show()  
