@@ -5,10 +5,16 @@ from unicodedata import normalize
 import html5lib 
 from bs4 import BeautifulSoup
 
-odds_tables = pd.read_html('https://www.vegasinsider.com/nfl/nfl-odds-week-2-2023/')
-#odds_tables = pd.read_html('https://www.oddsshark.com/nfl/odds')
+pd.set_option('display.max_rows', None)
+#odds_tables = pd.read_html('https://www.vegasinsider.com/nfl/nfl-odds-week-2-2023/')
+
+odds_tables = pd.read_html('https://www.vegasinsider.com/nfl/odds/las-vegas/')
+
+#odds_tables = pd.read_html('https://www.oddsshark.com/nfl/')
 
 table = odds_tables[0]
+print("==================================")
+print(table)
 
 
 table[['Away','Home']]= table['Matchup'].str.split("vs", expand = True)
